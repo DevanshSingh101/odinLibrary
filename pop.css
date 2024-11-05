@@ -1,0 +1,81 @@
+.popContainer{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgb(151, 68, 68);
+    display: none;
+    flex-direction: column;
+    padding: 3rem;
+    border-radius: 3rem;
+    font-size: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: fit-content;
+}
+
+.popContainer label{
+    display: block;
+}
+
+.popContainer input {
+    margin: 0;
+    margin-bottom: 2em;
+}
+
+.popContainer button {
+    width: 10em;
+    height: 3em;
+    color: black;
+    background-color: rgb(255, 65, 7);
+    border-radius: 1em;
+    align-self: center;
+    font-size: 1em;
+}
+
+.popContainer h3{
+    color: black;
+}
+
+#Read{
+    align-self: flex-start;
+    padding: 0;
+    display: inline;
+    display:none;
+    width: 3em;
+}
+
+.popHeader{
+    align-self: flex-end;
+   
+}
+
+.popForm >*{
+    color: black;
+    padding: 0;
+    margin: 0;
+}
+
+.popForm > input{
+    height: 2em;
+    width: 20em;
+    border-radius: 1rem;
+    padding: 0.4rem;
+}
+
+.popFormContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.popFormContainer #Read{
+    align-self: flex-start;
+    display: inline;
+}
+
+.show {
+    display: flex;
+}
+
+.close{
+    cursor: default;
+}

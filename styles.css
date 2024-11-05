@@ -1,0 +1,49 @@
+*{
+    margin:0;
+    padding: 0;
+    color: white;
+}
+
+div{
+    display:flex;
+}
+
+body{
+    background-color: black;
+}
+
+.navbar{
+    justify-content: center;
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
+}
+
+.wrapper{
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+.book{
+    height: 30vh;
+    width: 10vw;
+    border: 0.2rem solid white;
+    border-radius: 1rem;
+    flex-direction: column;
+}
+
+.bookContainer{
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.book>p{
+    margin-left: 0.7rem;
+}
+
+.book>p:first-child{
+    margin-top:0.7rem;
+}
