@@ -2,16 +2,14 @@
 
 const addButton = document.querySelector('#addBook');
 const bookContainer = document.querySelector('.bookContainer');
-const delBook = document.querySelector('#delBook');
 const openPop = document.querySelector('#openPop.button-30');
 const closePop = document.querySelector('.close');
 const popUp = document.querySelector('.popContainer');
+removeButton = document.querySelectorAll('.delBook');
 
-//create array of book objects with names 1 and 2
+
 let bookList = [];
-
-
-//Pop Up
+refreshBooks();
 popUpFunctionality();
 
 
@@ -19,61 +17,87 @@ popUpFunctionality();
 //validate form
 //show error otherwise
 //add the book
+
 addButton.onclick = ()=>{ 
-    let selectorList = [document.getElementById('#title'), document.getElementById('author'), document.getElementById('#Read')];
-    addBook(selectorList);}
+ 
+    let selectorList = [document.getElementById('title'), document.getElementById('author'), document.getElementById('Read')];
+    addBook(selectorList);
+    refreshBooks();
+    removeButton = document.querySelectorAll('.delBook');
+    removeButton.forEach((e)=>{
+            
+        e.onclick = console.log('remove clicked');
+    });
+    
+    
+}
 
+function removeBook(btn){
+  console.log('remove')
+  btnId = btn.id;
+  bookList.splice(btnId, 1);
+  refreshBooks();
 
-
-
+}
 
 function refreshBooks(){
-    let allBooks = document.querySelectorAll('.books');
+    
+    let allBooks = document.querySelectorAll('.book');
     //remove all books
     allBooks.forEach((bookx)=>{
         bookx.remove();
     });
     //add from the new list
-    bookList.forEach((element)=>{
-        let bookDiv = document.createElement('div');
-        
-        //I hope this creates the book and sets class to it
-        bookDiv.setAttribute('class', 'book');
+    bookList.forEach((element, i)=>{
+        //Creating Book
+        //Creating Book Div   
+        element.index = i;
+        let bookDiv = document.createElement('div');;
+        bookDiv.classList.add('book');
+        bookContainer.appendChild(bookDiv);
+
+        //add title
+        let titleCreate = document.createElement('p');
+        bookDiv.appendChild(titleCreate);
+        titleCreate.innerHTML = element.title;
+
+        //add author
+        let authorCreate = document.createElement('p');
+        bookDiv.appendChild(authorCreate);
+        authorCreate.innerHTML = element.author;
+
+
+        //add remove button
+        let buttonCreate = document.createElement('button');
+        buttonCreate.classList.add('button-30');
+        buttonCreate.classList.add('delBook');
+        bookDiv.appendChild(buttonCreate);
+        buttonCreate.innerHTML = 'Remove';
+        buttonCreate.id = i;
     })
+    
+    //delete functionality
+
 
 
 }
 
 function addBook(sList){ //selector list as input
- let bookInst = new book(sList[0].innerHTML, sList[1].innerHTML, sList[2].innerHTML);
+ let bookInst = new book(sList[0].value, sList[1].value, sList[2].checked);
  bookList.push(bookInst);
- console.log('subed');
- console.log(bookList);
 }
 
-
-
 function popUpFunctionality(){
-openPop.onclick = ()=>{
-    console.log('C');
-    popUp.classList.add('show');
-}    
+
+    openPop.onclick = ()=>{
+        console.log('C');
+        popUp.classList.add('show');
+    }    
     //close
     closePop.onclick= ()=>{
         popUp.classList.remove('show');
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 //Book Constructer
 function book(title, author, read){
@@ -81,7 +105,3 @@ function book(title, author, read){
   this.author = author;
   this.read = read;
 }
-
-    
-
-
