@@ -5,10 +5,11 @@ const bookContainer = document.querySelector('.bookContainer');
 const openPop = document.querySelector('#openPop.button-30');
 const closePop = document.querySelector('.close');
 const popUp = document.querySelector('.popContainer');
-removeButton = document.querySelectorAll('.delBook');
+let removeButton = document.querySelectorAll('.delBook');
 
 
 let bookList = [];
+
 refreshBooks();
 popUpFunctionality();
 
@@ -23,10 +24,12 @@ addButton.onclick = ()=>{
     let selectorList = [document.getElementById('title'), document.getElementById('author'), document.getElementById('Read')];
     addBook(selectorList);
     refreshBooks();
+    // -----------------------------------------------------------------Problem
     removeButton = document.querySelectorAll('.delBook');
     removeButton.forEach((e)=>{
             
-        e.onclick = console.log('remove clicked');
+        // console.log(e);
+        e.onclick = removeBook(e);
     });
     
     
